@@ -1,0 +1,17 @@
+// Vitest Snapshot v1
+
+exports[`should > remove setup return 1`] = `
+"
+<script lang=\\"ts\\">
+import { defineComponent, reactive, ref } from 'vue'
+
+export default defineComponent({})
+const a = ref(1)
+const b = reactive([])
+
+function fn() {
+  return 1
+}
+</script>
+"
+`;
