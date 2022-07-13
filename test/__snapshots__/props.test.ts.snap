@@ -3,7 +3,15 @@
 exports[`should > generate props 1`] = `
 "
 <script>
-export default defineComponent();
+export default defineComponent({
+  name: 'Test',
+
+  setup() {
+    return {
+      props: '1',
+    };
+  }
+})
 const props = defineProps({
   width: {
     type: Number,

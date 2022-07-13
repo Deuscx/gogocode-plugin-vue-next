@@ -1,0 +1,31 @@
+// Vitest Snapshot v1
+
+exports[`should > remove setup return 1`] = `
+"
+<template>
+    <div>
+      <p>{{ text }}</p>
+      <button @click=\\"$emit('accepted')\\">
+        OK
+      </button>
+    </div>
+</template>
+
+<script lang=\\"ts\\">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  props: ['text'],
+  emits: ['accepted'],
+  setup(_, { emit }) {
+    function accept() {
+      emit('accepted')
+    }
+    return {
+      accept,
+    };
+  },
+})
+</script>
+"
+`;
