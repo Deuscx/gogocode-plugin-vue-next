@@ -8,6 +8,7 @@ describe('should', () => {
     const ast = $.loadFile(resolve(__dirname, './examples/setup.vue'), {
       parseOptions: { language: 'vue' },
     })
+    const isSetupScript = ast.has('<script setup></script>')
     const script = ast.find('<script></script>')
     script.find('{ setup() {$$$0} }').each((item) => {
       // remove return statement
@@ -17,6 +18,7 @@ describe('should', () => {
       })
     })
     script.find('setup(){}').remove()
+    // TODO: add script setup
     expect(ast.generate()).toMatchSnapshot()
   })
 })

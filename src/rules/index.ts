@@ -7,5 +7,5 @@ interface IRule {
   test: RegExp
 }
 
-const rules: IRule[] = [{ name: 'arrayRefs', rule: props, test: /\.vue$/ }]
+const rules: IRule[] = [{ name: 'props', rule: props, test: /\.vue$/ }]
 export default rules
