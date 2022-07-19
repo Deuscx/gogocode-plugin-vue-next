@@ -18,6 +18,19 @@ describe('should', () => {
       })
     })
     script.find('setup(){}').remove()
+
+    // remove component
+    const components = script.find('{ components: $_$1 }')
+    const componentsArr = components.match[1][0].value
+    if (componentsArr) {
+      script.find('components: $_$1').each((item) => {
+        if (item.parent(2).has('defineComponent'))
+          item.remove()
+      })
+    }
+
+    // remove defineComponent
+
     // TODO: add script setup
     expect(ast.generate()).toMatchSnapshot()
   })
