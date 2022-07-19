@@ -30,8 +30,11 @@ describe('should', () => {
     }
 
     // remove defineComponent
+    script.find('export default $_$1').each((item) => {
+      item.remove()
+    })
 
-    // TODO: add script setup
-    expect(ast.generate()).toMatchSnapshot()
+    // finally: add script setup
+    expect(ast.generate().replace('script', 'script setup')).toMatchSnapshot()
   })
 })

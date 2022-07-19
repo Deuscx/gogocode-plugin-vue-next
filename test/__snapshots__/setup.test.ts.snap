@@ -2,12 +2,9 @@
 
 exports[`should > remove setup return 1`] = `
 "
-<script lang=\\"ts\\">
+<script setup lang=\\"ts\\">
 import { defineComponent, reactive, ref } from 'vue'
 
-export default defineComponent({
-  name: 'Test'
-})
 const a = ref(1)
 const b = reactive([])
 
