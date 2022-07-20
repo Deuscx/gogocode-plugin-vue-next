@@ -28,3 +28,40 @@ function accept() {
 </script>
 "
 `;
+
+exports[`should > remove setup return 2`] = `
+"
+<script setup lang=\\"ts\\">
+import { defineProps } from 'vue'const props = defineProps({
+  width: {
+    type: Number,
+    default: 446,
+  },
+  title: {
+    type: String,
+    default: '',
+  },
+})
+</script>
+"
+`;
+
+exports[`should > remove setup return 3`] = `
+"
+<template>
+    <div>
+      <p>{{ text }}</p>
+      <button @click=\\"$emit('accepted')\\">
+        OK
+      </button>
+    </div>
+</template>
+
+<script setup lang=\\"ts\\">
+import { defineEmits } from 'vue'const emit = defineEmit(['accepted'])
+function accept() {
+  emit('accepted')
+}
+</script>
+"
+`;

@@ -7,8 +7,8 @@ export function insertDefineProps(script: $.GoGoAST) {
   let needToInjectProps = false
 
   opt.each((item) => {
-    const value = item.match[1][0].value
-    const node = item.match[1][0].node
+    const value = item.match?.[1]?.[0].value
+    const node = item.match?.[1]?.[0].node
     if (node.type === 'ObjectExpression') {
       needToInjectProps = true
       script.after(`const props = defineProps(${value})`)
@@ -34,7 +34,7 @@ export function insertDefineEmits(script: $.GoGoAST) {
   const hasEmits = script.has('defineEmits')
   let needToInjectEmits = false
   script.find('setup($_$,$_$1) {}').each((item) => {
-    const match = item.match[1][0]
+    const match = item.match?.[1]?.[0]
     const node = match.node
     const nodeType = node.type
     if (nodeType === 'Identifier') {
@@ -72,7 +72,7 @@ export function insertDefineEmits(script: $.GoGoAST) {
 export function exposeSetup(script: $.GoGoAST) {
   script.find('{ setup() {$$$0} }').each((item) => {
     // remove return statement
-    (item.match.$$$0 as unknown as Node[]).forEach((node) => {
+    (item.match?.$$$0 as unknown as Node[]).forEach((node) => {
       if (node.type !== 'ReturnStatement')
         script.after(node)
     })
@@ -81,7 +81,7 @@ export function exposeSetup(script: $.GoGoAST) {
 
   // remove component
   const components = script.find('{ components: $_$1 }')
-  const componentsArr = components.match[1][0].value
+  const componentsArr = components.match?.[1]?.[0].value
   if (componentsArr) {
     script.find('components: $_$1').each((item) => {
       if (item.parent(2).has('defineComponent'))
