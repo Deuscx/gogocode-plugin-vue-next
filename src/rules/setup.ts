@@ -11,7 +11,7 @@ export function insertDefineProps(script: $.GoGoAST) {
     const node = item.match?.[1]?.[0].node
     if (node.type === 'ObjectExpression') {
       needToInjectProps = true
-      script.after(`const props = defineProps(${value})`)
+      script.after(`\r\nconst props = defineProps(${value})`)
     }
   })
 
@@ -52,7 +52,7 @@ export function insertDefineEmits(script: $.GoGoAST) {
   // Remove emits
   const emitsArr = emits.match?.[1]?.[0].value
   if (emitsArr) {
-    script.after(`const emit = defineEmit(${emitsArr})`)
+    script.after(`\r\nconst emit = defineEmit(${emitsArr})`)
     script.find('emits: $_$1').each((item) => {
       if (item.parent(2).has('defineComponent'))
         item.remove()

@@ -4,7 +4,7 @@ import $ from 'gogocode'
 import { transformSetup } from '../src/rules/setup'
 
 describe('should', () => {
-  it('remove setup return', () => {
+  it('setup', () => {
     const ast = $.loadFile(resolve(__dirname, './examples/setup.vue'), {
       parseOptions: { language: 'vue' },
     })
@@ -13,7 +13,7 @@ describe('should', () => {
     expect(transformSetup(ast)).toMatchSnapshot()
   })
 
-  it('remove setup return', () => {
+  it('props', () => {
     const ast = $.loadFile(resolve(__dirname, './examples/props.vue'), {
       parseOptions: { language: 'vue' },
     })
@@ -22,7 +22,7 @@ describe('should', () => {
     expect(transformSetup(ast)).toMatchSnapshot()
   })
 
-  it('remove setup return', () => {
+  it('emits', () => {
     const ast = $.loadFile(resolve(__dirname, './examples/emits.vue'), {
       parseOptions: { language: 'vue' },
     })

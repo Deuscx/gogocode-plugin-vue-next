@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, reactive, ref } from "vue"
 import Hello from 'hello.vue'
 export default defineComponent({
   name: 'Test',
