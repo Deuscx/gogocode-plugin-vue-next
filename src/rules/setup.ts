@@ -52,7 +52,7 @@ export function insertDefineEmits(script: $.GoGoAST) {
   // Remove emits
   const emitsArr = emits.match?.[1]?.[0].value
   if (emitsArr) {
-    script.after(`\r\nconst emit = defineEmit(${emitsArr})`)
+    script.after(`\r\nconst emit = defineEmits(${emitsArr})`)
     script.find('emits: $_$1').each((item) => {
       if (item.parent(2).has('defineComponent'))
         item.remove()
